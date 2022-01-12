@@ -1,4 +1,5 @@
 import pyttsx3
+import smtplib
 import datetime
 import wikipedia
 import speech_recognition as sr
@@ -53,11 +54,20 @@ def takeCommand():
         # This line probably will only be used in production
         print(query) 
     except Exception as e:
-        print(e)
+        print(e) # Debug line
         print('Please repeat the command I dindt get it right.')
          # This IS key for multi-threading
         return "None"
     return query
+
+
+def sendEmail(to, content):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('mail@mail.com', 'password') # Configure this with the proper credentials maybe make a db with users and the credentials
+    server.sendmail('dest@destination.com', to, content)
+    server.close()
 
 
 if __name__ == "__main__":
@@ -76,6 +86,18 @@ if __name__ == "__main__":
             result = wikipedia.summary(query, sentences=2)
             print(result) # production
             speak(result)
+
+        elif 'send mail' in query:
+            try:
+                speak('what shoyld i send')
+                content = takeCommand()
+                to = 'dest@destination.com'
+                sendEmail(to, content)
+                speak('Email sent.')
+            except Exception as e:
+                print(e) # Debug line
+                print('[-] Unable to send mail please read message above')
+
         
         elif 'offline' in query:
             quit()
