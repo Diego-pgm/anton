@@ -57,7 +57,7 @@ def takeCommand():
         print(query) 
     except Exception as e:
         print(e) # Debug line
-        print('Please repeat the command I dindt get it right.')
+        print('Please repeat the command I didnt get it right.')
          # This IS key for multi-threading
         return "None"
     return query
@@ -103,7 +103,7 @@ if __name__ == "__main__":
         
         elif 'chrome' in query:
             speak('What should i open?')
-            chromepath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+            chromepath = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s &'
             search = takeCommand().lower()
             try:
                 wb.get(chromepath).open_new_tab(search+'.com')
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
         elif 'brave' in query:
             speak('What should i open?')
-            chromepath = 'C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe'
+            chromepath = 'C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe %s &'
             search = takeCommand().lower()
             try:
                 wb.get(chromepath).open_new_tab(search+'.com')
