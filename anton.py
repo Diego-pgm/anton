@@ -1,5 +1,6 @@
 import pyttsx3
 import datetime
+import speech_recognition as sr
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -36,8 +37,26 @@ def greeting():
     else:
         speak('good night')
     speak('anton at your service, how can i help you')
-    # Crear menu de opciones para usar anton
+    # Create menu to help user use anton
 
-time()
-date()
-greeting()
+
+def takeCommand():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print('Listening...')
+        r.pause_threshold = 1
+        audio = r.listen(source)
+    try:
+        print('Recognizing...')
+        query = r.recognize_google(audio)
+        # This line probably will only be used in production
+        print(query) 
+    except Exception as e:
+        print(e)
+        print('Please repeat the command I dindt get it right.')
+         # This may be the key for multi-threading
+        return "None"
+    return query
+
+
+takeCommand()
