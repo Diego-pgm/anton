@@ -25,5 +25,19 @@ def date():
     speak(month)
     speak(year)
 
+
+def greeting():
+    speak('welcome back')
+    hour = datetime.datetime.now().hour
+    if hour >=6 and hour < 12:
+        speak('good morning')
+    elif hour >=12 and hour < 18:
+        speak('good afternoon')
+    else:
+        speak('good night')
+    speak('anton at your service, how can i help you')
+    # Crear menu de opciones para usar anton
+
 time()
 date()
+greeting()
