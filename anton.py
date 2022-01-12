@@ -131,6 +131,20 @@ if __name__ == "__main__":
             songs = os.listdir(songs_dir)
             os.startfile(os.path.join(songs_dir, songs[0]))
 
+        # Work in this option and maybe a db for users so theres an email and use the send email funct too and a table for reminders.
+        elif 'remember' in query:
+            speak('what should i remember')
+            data = takeCommand()
+            speak('you want me to remember that'+data)
+            remember = open('data.txt', 'w')
+            remember.write(data)
+            remember.close()
+
+        elif 'do you know anything' in query:
+            remember = open('data.txt', 'r')
+            speak('you told me to remember that'+remember.read())
+
+
         elif 'logout' in query:
             os.system('shutdown -l')
         elif 'restart' in query:
