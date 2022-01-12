@@ -1,3 +1,4 @@
+import os
 import pyttsx3
 import smtplib
 import datetime
@@ -117,6 +118,13 @@ if __name__ == "__main__":
                 wb.get(chromepath).open_new_tab(search+'.com')
             except Exception as e:
                 print(e)
+
+        elif 'logout' in query:
+            os.system('shutdown -l')
+        elif 'restart' in query:
+            os.system('shutdown /r /t 1')
+        elif 'shutdown' in query:
+            os.system('shutdown /s /t 1')
 
         
         elif 'offline' in query:
