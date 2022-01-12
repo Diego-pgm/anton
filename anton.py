@@ -15,4 +15,15 @@ def time():
     speak('the current time is')
     speak(zeit)
 
+
+def date():
+    year = int(datetime.datetime.now().year)
+    month = int(datetime.datetime.now().month)
+    dat = int(datetime.datetime.now().day)
+    speak("the current date is")
+    speak(dat)
+    speak(month)
+    speak(year)
+
 time()
+date()
