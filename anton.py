@@ -54,9 +54,21 @@ def takeCommand():
     except Exception as e:
         print(e)
         print('Please repeat the command I dindt get it right.')
-         # This may be the key for multi-threading
+         # This IS key for multi-threading
         return "None"
     return query
 
 
-takeCommand()
+if __name__ == "__main__":
+    greeting()
+    while True:
+        query = takeCommand().lower()
+        
+        if 'time' in query:
+            time()
+        
+        elif 'date' in query:
+            date()
+        
+        elif 'offline' in query:
+            quit()
