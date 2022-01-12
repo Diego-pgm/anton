@@ -1,4 +1,5 @@
 import os
+import psutil
 import pyttsx3
 import smtplib
 import datetime
@@ -76,6 +77,15 @@ def screenshot():
     img = pyautogui.screenshot()
     img.save('ss.png')
 
+def cpu():
+    usage = str(psutil.cpu_percent())
+    speak('cpu is at'+usage)
+    speak('percent')
+    battery = psutil.sensors_battery()
+    speak('Battery is')
+    speak(battery.percent)
+    speak('percent')
+
 
 if __name__ == "__main__":
     greeting()
@@ -150,6 +160,10 @@ if __name__ == "__main__":
         # Work this one
         elif 'screenshot' in query:
             screenshot()
+
+        # Implement on this one the disk usage and memory usage
+        elif 'cpu' in query:
+            cpu()
 
         elif 'logout' in query:
             os.system('shutdown -l')
