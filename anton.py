@@ -108,6 +108,7 @@ if __name__ == "__main__":
             try:
                 wb.get(chromepath).open_new_tab(search+'.com')
             except Exception as e:
+                speak('please install brave browser')
                 print(e)
 
         elif 'brave' in query:
@@ -117,7 +118,18 @@ if __name__ == "__main__":
             try:
                 wb.get(chromepath).open_new_tab(search+'.com')
             except Exception as e:
+                speak('please install brave browser')
                 print(e)
+
+
+        elif 'spotify' in query:
+            speak('Opening spotify')
+            os.system('spotify.exe')
+
+        elif 'play that country music whiteboy' in query:
+            songs_dir = 'C:/Music'  #-----> modify this line to get the location of the music in the machine
+            songs = os.listdir(songs_dir)
+            os.startfile(os.path.join(songs_dir, songs[0]))
 
         elif 'logout' in query:
             os.system('shutdown -l')
@@ -125,7 +137,7 @@ if __name__ == "__main__":
             os.system('shutdown /r /t 1')
         elif 'shutdown' in query:
             os.system('shutdown /s /t 1')
-
         
         elif 'offline' in query:
+            speak('Disconected.')
             quit()
