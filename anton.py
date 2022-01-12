@@ -2,6 +2,7 @@ import pyttsx3
 import smtplib
 import datetime
 import wikipedia
+import webbrowser as wb
 import speech_recognition as sr
 
 engine = pyttsx3.init()
@@ -97,6 +98,25 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e) # Debug line
                 print('[-] Unable to send mail please read message above')
+
+        
+        elif 'chrome' in query:
+            speak('What should i open?')
+            chromepath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+            search = takeCommand().lower()
+            try:
+                wb.get(chromepath).open_new_tab(search+'.com')
+            except Exception as e:
+                print(e)
+
+        elif 'brave' in query:
+            speak('What should i open?')
+            chromepath = 'C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe'
+            search = takeCommand().lower()
+            try:
+                wb.get(chromepath).open_new_tab(search+'.com')
+            except Exception as e:
+                print(e)
 
         
         elif 'offline' in query:
