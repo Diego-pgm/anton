@@ -1,5 +1,6 @@
 import os
 import psutil
+import pyjokes
 import pyttsx3
 import smtplib
 import datetime
@@ -86,6 +87,10 @@ def cpu():
     speak(battery.percent)
     speak('percent')
 
+def jokes():
+    joke = pyjokes.get_joke()
+    speak(joke)
+
 
 if __name__ == "__main__":
     greeting()
@@ -171,6 +176,9 @@ if __name__ == "__main__":
             os.system('shutdown /r /t 1')
         elif 'shutdown' in query:
             os.system('shutdown /s /t 1')
+
+        elif 'joke' in query:
+            jokes()
         
         elif 'offline' in query:
             speak('Disconected.')
