@@ -6,6 +6,7 @@ import smtplib
 import datetime
 import pyautogui
 import wikipedia
+import subprocess
 import webbrowser as wb
 import speech_recognition as sr
 
@@ -91,6 +92,15 @@ def jokes():
     joke = pyjokes.get_joke()
     speak(joke)
 
+# def open(program):
+#     if 'prime' in program:
+#         program = 'primevideo'
+#         cmd = 'Start-Process {}'.format(program)
+#         subprocess.run(['powershell', '-Command', cmd])
+#     else:
+#         cmd = 'Start-Process {}'.format(program)
+#         subprocess.run(['powershell', '-Command', cmd])
+
 
 if __name__ == "__main__":
     greeting()
@@ -169,6 +179,23 @@ if __name__ == "__main__":
         # Implement on this one the disk usage and memory usage
         elif 'cpu' in query:
             cpu()
+
+        # elif 'netflix' in query:
+        #     query = query.replace('%snetflix%s', 'netflix')
+        #     open(query)
+
+        # elif 'prime' in query:
+        #     open(query)
+        elif 'open' in query:
+            query = query.replace('anton', '')
+            query = query.replace('open', '')
+            if 'prime' in query:
+                query = ' primevideo'
+            cmd = 'Start-Process{}'.format(query)
+            subprocess.run(["powershell", "-Command", cmd])
+
+        elif 'start coding' in query:
+            subprocess.run(['powershell', '-Command', '.code'])
 
         elif 'logout' in query:
             os.system('shutdown -l')
