@@ -2,6 +2,7 @@ import os
 import pyttsx3
 import smtplib
 import datetime
+import pyautogui
 import wikipedia
 import webbrowser as wb
 import speech_recognition as sr
@@ -71,6 +72,10 @@ def sendEmail(to, content):
     server.sendmail('dest@destination.com', to, content)
     server.close()
 
+def screenshot():
+    img = pyautogui.screenshot()
+    img.save('ss.png')
+
 
 if __name__ == "__main__":
     greeting()
@@ -99,7 +104,6 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e) # Debug line
                 print('[-] Unable to send mail please read message above')
-
         
         elif 'chrome' in query:
             speak('What should i open?')
@@ -120,7 +124,6 @@ if __name__ == "__main__":
             except Exception as e:
                 speak('please install brave browser')
                 print(e)
-
 
         elif 'spotify' in query:
             speak('Opening spotify')
@@ -144,6 +147,9 @@ if __name__ == "__main__":
             remember = open('data.txt', 'r')
             speak('you told me to remember that'+remember.read())
 
+        # Work this one
+        elif 'screenshot' in query:
+            screenshot()
 
         elif 'logout' in query:
             os.system('shutdown -l')
