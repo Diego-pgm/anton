@@ -162,7 +162,7 @@ if __name__ == "__main__":
             remember = open('data.txt', 'r')
             speak('you told me to remember that'+remember.read())
 
-        # Work this one
+        # Work this one to save more than one
         elif 'screenshot' in query:
             screenshot()
 
